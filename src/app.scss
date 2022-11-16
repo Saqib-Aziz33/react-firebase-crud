@@ -1,0 +1,21 @@
+*{
+    font-family: 'Roboto', serif;
+}
+body{
+    margin: 0;
+    background: #f8f8f8;
+
+    #root{
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+::-webkit-scrollbar{
+    height: 5px;
+    width: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #e3e3e3;
+}
