@@ -15,9 +15,13 @@ function Header() {
   const { user } = useUserContext();
 
   return (
-    <Toolbar>
-      <Container>
-        <AppBar elevation={1} sx={{ bgcolor: "#fff", p: 2 }}>
+    <Toolbar sx={{ bgcolor: "#fff", boxShadow: "1px 1px 5px #3d3d3daa" }}>
+      <AppBar
+        position="static"
+        elevation={0}
+        sx={{ bgcolor: "transparent", p: 2 }}
+      >
+        <Container>
           <Stack
             direction="row"
             alignItems="center"
@@ -45,8 +49,8 @@ function Header() {
               </Stack>
             )}
           </Stack>
-        </AppBar>
-      </Container>
+        </Container>
+      </AppBar>
     </Toolbar>
   );
 }

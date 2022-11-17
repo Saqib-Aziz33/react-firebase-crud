@@ -60,7 +60,7 @@ function Login() {
   };
 
   return (
-    <Box>
+    <Box sx={{ my: 5 }}>
       <Container maxWidth="sm">
         <Stack spacing={2} component="form" autoComplete="off">
           <Typography variant="h5">Register</Typography>
