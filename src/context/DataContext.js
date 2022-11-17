@@ -7,6 +7,7 @@ import {
   query,
   where,
   deleteDoc,
+  setDoc,
   doc,
 } from "firebase/firestore";
 import { db } from "../firebase.config";
@@ -47,7 +48,7 @@ export default function DataProvider({ children }) {
   async function deleteData(id) {
     try {
       setLoading(true);
-      const res = await deleteDoc(doc(db, "challenges", id));
+      await deleteDoc(doc(db, "challenges", id));
       dispatch({ type: "DELETE_DATA", payload: id });
     } catch (e) {
       alert("something went wrong");
@@ -57,7 +58,26 @@ export default function DataProvider({ children }) {
     }
   }
 
-  function updateData() {}
+  function updateData(challenge, id) {
+    setLoading(true);
+    setDoc(
+      doc(db, "challenges", id),
+      {
+        challenge,
+      },
+      { merge: true }
+    )
+      .then(() => {
+        dispatch({ type: "UPDATE_DATA", payload: { challenge, id } });
+        alert("updated");
+        setLoading(false);
+      })
+      .catch((e) => {
+        alert("error while updating");
+        console.log("update error", e);
+        setLoading(false);
+      });
+  }
 
   return (
     <DataContext.Provider
